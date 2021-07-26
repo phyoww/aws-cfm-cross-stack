@@ -1,4 +1,4 @@
-# aws-cross-stack
+# aws-cfm-cross-stack
 
 # Lab enviroment will be consist of below CFM template:
 1. Create VPC and Custom Security Group
