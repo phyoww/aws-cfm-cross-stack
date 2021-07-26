@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  cloudideastarMasterVpc1:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: "192.168.0.0/16"
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      InstanceTenancy: "default"
+      Tags:
+        - Key: "Name"
+          Value: "cloudideastar-master-vpc1"
+  publicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: "ap-southeast-1a"
+      CidrBlock: "192.168.1.0/24"
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: "Name"
+          Value: "mastervpc1-public-subnet1"
+      VpcId: !Ref cloudideastarMasterVpc1
+  publicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: "ap-southeast-1b"
+      CidrBlock: "192.168.2.0/24"
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: "Name"
+          Value: "mastervpc1-public-subnet2"
+      VpcId: !Ref cloudideastarMasterVpc1
+  publicSubnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: "ap-southeast-1c"
+      CidrBlock: "192.168.3.0/24"
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: "Name"
+          Value: "mastervpc1-public-subnet3"
+      VpcId: !Ref cloudideastarMasterVpc1
+Outputs:
+  cloudideastarMasterVpc1ID:
+    Description: "cloudideastar Master VPC1 ID"
+    Value: !Ref cloudideastarMasterVpc1
+    Export:
+      Name: !Sub ${AWS::StackName}-VPCID
